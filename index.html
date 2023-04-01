@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Сервис комментариев со спам фильтром</h1>
+    <p>Оставьте ваш комментарий</p>
+
+    <div>
+        <label for="username"> Введите ваше ФИО:</label>
+        <input name="user" id="username" type="text">
+    </div>
+    <div>
+        <label for="url">Введите ссылку вашего аватара:</label>
+        <input type="url" id="url">
+    </div>
+    <div>
+        <label for="">Оставьте комментарий</label>
+        <textarea></textarea>
+    </div>
+
+
+    <button onclick="user()"> Отправить</button>
+    <div>
+
+
+        <p>Чат</p>
+    </div>
+    <script>
+        // let name = document.getElementById('username').value = name.toUpperCase();
+
+        function user() {
+
+            let name = document.getElementById('username').value.charAt(0).toUpperCase() + document.getElementById(
+                'username').value.slice(1);
+
+            console.log(name);
+            let url = document.getElementById('url').value;
+            console.log(url);
+        }
+    </script>
+</body>
+
+</html>
