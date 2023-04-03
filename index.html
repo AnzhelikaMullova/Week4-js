@@ -27,23 +27,74 @@
 
 
     <button onclick="user()"> Отправить</button>
-    <div>
 
+    <p>Чат</p>
+    <p id="nameinput"></p>
 
-        <p>Чат</p>
+    <img src="" id="img">
     </div>
     <script>
-        // let name = document.getElementById('username').value = name.toUpperCase();
-
         function user() {
+            // Получаем строку
+            let str = document.getElementById('username').value.trim();
 
-            let name = document.getElementById('username').value.charAt(0).toUpperCase() + document.getElementById(
-                'username').value.slice(1);
+            // Разделяем строку на части по пробельным символам. Эти части будут записанны как элементы массива, который будет возвращен методом split.
+            let fullNameArr = str.split(' ');
 
-            console.log(name);
+            // Для каждого элемента массива в цикле выполняем преобразование
+            for (let i = 0; i < fullNameArr.length; i++) {
+                fullNameArr[i] = fullNameArr[i].charAt(0).toUpperCase() + fullNameArr[i].slice(1).toLowerCase();
+            }
+
+            // Соединяем элементы массива в строку
+            let fullNameStr = fullNameArr.join(' ');
+
+            // console.log(fullNameStr);
+
+
+            let nameinput = document.getElementById('nameinput');
+
+            nameinput = document.getElementById('username').value.trim();
+
+
+
+            //вывод картинки 
             let url = document.getElementById('url').value;
-            console.log(url);
+            let img = document.getElementById('img');
+            img.src = url;
+
         }
+
+        function checkSpam(str) {
+
+            const comment1 = checkSpam('buy ViAgRA now'); //результат buy *** now
+            const comment2 = checkSpam('free xxx'); //результат free ***
+            const comment3 = checkSpam("innocent rabbit"); //результат innocent rabbit
+
+            let resultcom1 = comment1.replace('ViAgRA', '***');
+            console.log(resultcom1);
+
+        }
+
+
+
+
+
+
+
+
+
+
+        // let url = document.getElementById('url').value;
+        // let img = document.getElementById('img');
+        // img.src = url;
+
+
+
+        // let name = document.getElementById('username').value.charAt(0).toUpperCase() + document.getElementById(
+        //     'username').value.slice(1).toLowerCase();
+
+        // console.log(name); // ЕСЛИ ОДНО СЛОВО В ФУНКЦИИ ЕСЛИ БОЛЬШЕ ЭТО МАСИВ
     </script>
 </body>
 
