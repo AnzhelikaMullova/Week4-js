@@ -26,12 +26,12 @@
     </div>
 
 
-    <button onclick="user()"> Отправить</button>
+    <button id="button"> Отправить</button>
 
     <p>Чат</p>
     <p id="nameinput"></p>
-
     <img src="" id="img">
+    <p id="textarea"></p>
     </div>
     <script>
         function user() {
@@ -51,71 +51,22 @@
 
             console.log(fullNameStr);
 
+            let nameinput = document.getElementById('nameinput');
+
+            nameinput.textContent = fullNameStr;
+
+
+            //вывод картинки 
+            let url = document.getElementById('url').value;
+            let img = document.getElementById('img');
+            img.src = url;
+
 
         };
-
+        let button = document.getElementById('button');
         button.addEventListener('click', user);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // function user() {
-        //     // Получаем строку
-        //     let str = document.getElementById('username').value.trim();
-
-        //     // Разделяем строку на части по пробельным символам. Эти части будут записанны как элементы массива, который будет возвращен методом split.
-        //     let fullNameArr = str.split(' ');
-
-        //     // Для каждого элемента массива в цикле выполняем преобразование
-        //     for (let i = 0; i < fullNameArr.length; i++) {
-        //         fullNameArr[i] = fullNameArr[i].charAt(0).toUpperCase() + fullNameArr[i].slice(1).toLowerCase();
-        //     }
-
-        //     // Соединяем элементы массива в строку
-        //     let fullNameStr = fullNameArr.join(' ');
-
-        //     // console.log(fullNameStr);
-
-
-        //     let nameinput = document.getElementById('nameinput');
-
-        //     nameinput = document.getElementById('username').value.trim();
-
-
-
-        //     //вывод картинки 
-        //     let url = document.getElementById('url').value;
-        //     let img = document.getElementById('img');
-        //     img.src = url;
-
-        // }
 
         function checkSpam(str) {
 
@@ -123,29 +74,21 @@
             const comment2 = checkSpam('free xxx'); //результат free ***
             const comment3 = checkSpam("innocent rabbit"); //результат innocent rabbit
 
-
             let textarea = document.getElementById('commentid').value;
 
 
-            let resultcom1 = comment1.replace('ViAgRA', '***');
+            let resultcom1 = textarea.replace('ViAgRA', '***').textContent;
+            let resultcom2 = textarea.replace('xxx', '***');
             console.log(resultcom1);
 
         }
+        checkSpam();
 
 
 
 
 
 
-
-
-
-
-
-
-        // let url = document.getElementById('url').value;
-        // let img = document.getElementById('img');
-        // img.src = url;
 
 
 
