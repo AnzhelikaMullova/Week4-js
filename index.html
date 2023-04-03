@@ -70,19 +70,29 @@
 
         function checkSpam(str) {
 
-            const comment1 = checkSpam('buy ViAgRA now'); //результат buy *** now
-            const comment2 = checkSpam('free xxx'); //результат free ***
-            const comment3 = checkSpam("innocent rabbit"); //результат innocent rabbit
+            const comment1 = 'buy ViAgRA now'; //результат buy *** now
+            const comment2 = 'free xxx'; //результат free ***
+            const comment3 = 'checkSpam'; //результат innocent rabbit
+
+            if (comment1.toLowerCase() == comment1.toUpperCase());
 
             let textarea = document.getElementById('commentid').value;
 
 
-            let resultcom1 = textarea.replace('ViAgRA', '***').textContent;
-            let resultcom2 = textarea.replace('xxx', '***');
-            console.log(resultcom1);
+            let resultcom1 = comment1.replace("ViAgRA", "***");
+            let resultcom2 = comment2.replace('xxx', '***');
+            // console.log(resultcom1);
+            // console.log(resultcom2);
+
+            let textResuil = document.getElementById('textarea');
+            textResuil.textContent = resultcom1;
+
+
 
         }
-        checkSpam();
+
+        button.addEventListener('click', checkSpam);
+
 
 
 
