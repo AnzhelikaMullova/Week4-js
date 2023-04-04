@@ -67,9 +67,6 @@
 
 
 
-        const comment1 = 'buy ViAgRA now'; //результат buy *** now
-        const comment2 = checkSpam('free xxx'); //результат free ***
-        const comment3 = checkSpam("innocent rabbit"); //результат innocent rabbit
 
         function checkSpam(str) {
 
@@ -78,24 +75,24 @@
 
             let resultcom1 = str.replace(/ViAgRA/gi, "***");
             let resultcom2 = str.replace(/xxx/gi, "***");
-            // console.log(resultcom1);
-            // console.log(resultcom2);
+
 
             let textResuil = document.getElementById('textarea');
             textResuil.textContent = resultcom1;
-
 
 
         }
 
 
         button.addEventListener('click', () => {
-            checkSpam();
-            let textarea = document.getElementById('commentid').value;
-            checkSpam(comment1);
-            checkSpam(comment2);
-            checkSpam(textarea);
 
+            let textarea = document.getElementById('commentid').value;
+            let textResuil = document.getElementById('textarea');
+
+            // checkSpam(comment1);
+            // // checkSpam(comment2);
+            // // checkSpam(textarea);
+            checkSpam(textResuil);
 
             user();
         });
