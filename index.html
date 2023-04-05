@@ -73,30 +73,21 @@
             let textarea = document.getElementById('commentid').value;
 
 
-            let resultcom1 = str.replace(/ViAgRA/gi, "***");
-            let resultcom2 = str.replace(/xxx/gi, "***");
+            let resultcom1 = str.replace(/ViAgRA/gi, "***").replace(/xxx/gi, "***");
+            // let resultcom2 = str.replace(/xxx/gi, "***");
 
 
             let textResuil = document.getElementById('textarea');
             textResuil.textContent = resultcom1;
-            // textResuil.textContent = resultcom2;
-
-
 
         }
-
 
         button.addEventListener('click', () => {
 
             let textarea = document.getElementById('commentid').value;
             let textResuil = document.getElementById('textarea');
 
-
             checkSpam(textarea);
-
-            // checkSpam('buy ViAgRA now');
-
-
             user();
         });
 
