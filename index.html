@@ -21,10 +21,15 @@
         <input type="url" id="url">
     </div>
     <div>
+        <p id="dateMessage"></p>
+    </div>
+    <div>
         <label for="">Оставьте комментарий</label>
         <textarea id="commentid"></textarea>
     </div>
+    <div>
 
+    </div>
 
     <button id="button"> Отправить</button>
 
@@ -34,6 +39,21 @@
     <p id="textarea"></p>
     </div>
     <script>
+        function date() {
+            let str = document.getElementById('username').value;
+            let url = document.getElementById('url').value;
+
+
+            if (!(str = " ") || (url = " ")) {
+                let date = new Date();
+
+                let dateMessage = document.getElementById('dateMessage');
+                dateMessage.textContent = date;
+            }
+
+        }
+
+
         function user() {
             // Получаем строку
             let str = document.getElementById('username').value.trim();
@@ -74,13 +94,13 @@
 
 
             let resultcom1 = str.replace(/ViAgRA/gi, "***").replace(/xxx/gi, "***");
-            // let resultcom2 = str.replace(/xxx/gi, "***");
-
 
             let textResuil = document.getElementById('textarea');
             textResuil.textContent = resultcom1;
 
         }
+
+
 
         button.addEventListener('click', () => {
 
@@ -89,6 +109,8 @@
 
             checkSpam(textarea);
             user();
+
+            date();
         });
 
 
