@@ -11,6 +11,17 @@
 <body>
     <h1>Сервис комментариев со спам фильтром</h1>
     <p>Оставьте ваш комментарий</p>
+    <div>
+        <p>Показвать ваше имя?</p>
+        <div>
+            <label for=""> Да</label>
+            <input type="checkbox" id="yesname">
+        </div>
+        <div>
+            <label for=""> Нет</label>
+            <input type="checkbox" id="noname">
+        </div>
+    </div>
 
     <div>
         <label for="username"> Введите ваше ФИО:</label>
@@ -50,6 +61,18 @@
                 let dateMessage = document.getElementById('dateMessage');
                 dateMessage.textContent = date;
             }
+
+        }
+
+        function username() {
+            let yes = document.getElementById('yesname').value;
+            let no = document.getElementById('noname').value;
+            if (!(no = "")) {
+                let nameinput = document.getElementById('nameinput');
+
+                nameinput.textContent = "username";
+            }
+
 
         }
 
@@ -111,6 +134,7 @@
             user();
 
             date();
+            username()
         });
 
 
