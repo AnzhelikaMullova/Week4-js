@@ -63,9 +63,9 @@
             let img = document.getElementById('img');
 
             const catAvatar = [
-                'assets\img\cat1.jpg',
-                'assets\img\cat2.jpg',
-                'assets\img\cat3.jpg',
+                "assets\img\cat1.jpg",
+                "assets\img\cat2.jpg",
+                "assets\img\cat3.jpg",
                 'assets\img\cat4.jpg',
                 'assets\img\cat5.jpg',
                 'assets\img\cat6.jpg',
@@ -75,6 +75,8 @@
 
             if (url == "") {
                 let rand = catAvatar[Math.floor(Math.random() * catAvatar.length)];
+                return img.src = rand;
+
 
             }
 
