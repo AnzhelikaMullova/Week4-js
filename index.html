@@ -55,7 +55,7 @@
             let url = document.getElementById('url').value;
 
 
-            if (!(str = " ") || (url = " ")) {
+            if (!(str == "") || (!url == "")) {
                 let date = new Date();
 
                 let dateMessage = document.getElementById('dateMessage');
@@ -67,9 +67,8 @@
         function username() {
             let yes = document.getElementById('yesname').value;
             let no = document.getElementById('noname').value;
-            if (!(no = "")) {
+            if (!(no == "")) {
                 let nameinput = document.getElementById('nameinput');
-
                 nameinput.textContent = "username";
             }
 
@@ -106,6 +105,27 @@
 
 
         };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         let button = document.getElementById('button');
 
 
