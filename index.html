@@ -6,54 +6,83 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+
 </head>
 
 <body>
-    <h1>Сервис комментариев со спам фильтром</h1>
-    <p>Оставьте ваш комментарий</p>
-    <div>
-        <p>Показвать ваше имя?</p>
-        <div>
-            <label for=""> Да</label>
-            <input type="checkbox" id="yesname">
+    <div class="chatMessage">
+        <div class="form">
+            <h1>Сервис комментариев со спам фильтром</h1>
+            <p>Оставьте ваш комментарий</p>
+            <p>Показвать ваше имя?</p>
+            <div class="check">
+                <div>
+                    <label for=""> Да</label>
+                    <input type="checkbox" id="yesname">
+                </div>
+                <div>
+                    <label for=""> Нет</label>
+                    <input type="checkbox" id="noname">
+                </div>
+            </div>
+
+
+            <div>
+                <label for="username"> Введите ваше ФИО:</label>
+                <input name="user" id="username" type="text">
+            </div>
+            <div>
+                <label for="url">Введите ссылку вашего аватара:</label>
+                <input type="url" id="url">
+            </div>
+
+            <div>
+                <label for="">Оставьте комментарий</label>
+                <textarea id="commentid"></textarea>
+            </div>
+
+            <button id="button"> Отправить</button>
         </div>
-        <div>
-            <label for=""> Нет</label>
-            <input type="checkbox" id="noname">
+
+        <div class="chat">
+            <p>Чат:</p>
+            <p id="nameinput"></p>
+            <img class="img" src="" id="img">
+            <div>
+                <p id="dateMessage"></p>
+            </div>
+            <p id="textarea"></p>
         </div>
     </div>
 
-    <div>
-        <label for="username"> Введите ваше ФИО:</label>
-        <input name="user" id="username" type="text">
-    </div>
-    <div>
-        <label for="url">Введите ссылку вашего аватара:</label>
-        <input type="url" id="url">
-    </div>
-    <div>
-        <p id="dateMessage"></p>
-    </div>
-    <div>
-        <label for="">Оставьте комментарий</label>
-        <textarea id="commentid"></textarea>
-    </div>
-    <div>
-
-    </div>
-
-    <button id="button"> Отправить</button>
-
-    <p>Чат</p>
-    <p id="nameinput"></p>
-    <img src="" id="img">
-    <p id="textarea"></p>
-    </div>
     <script>
+        function avatar() {
+
+            let url = document.getElementById('url').value;
+            let img = document.getElementById('img');
+
+            const catAvatar = [
+                'assets\img\cat1.jpg',
+                'assets\img\cat2.jpg',
+                'assets\img\cat3.jpg',
+                'assets\img\cat4.jpg',
+                'assets\img\cat5.jpg',
+                'assets\img\cat6.jpg',
+                'assets\img\cat7.jpg'
+
+            ];
+
+            if (url == "") {
+                let rand = catAvatar[Math.floor(Math.random() * catAvatar.length)];
+
+            }
+
+        }
+
         function date() {
             let str = document.getElementById('username').value;
             let url = document.getElementById('url').value;
-
 
             if (!(str == "") || (!url == "")) {
                 let date = new Date();
@@ -64,38 +93,35 @@
 
         }
 
-        function username() {
-            let yes = document.getElementById('yesname').value;
-            let no = document.getElementById('noname').value;
+        function user() {
+
+            let yes = document.getElementById('yesname').checked;
+            let no = document.getElementById('noname').checked;
             if (!(no == "")) {
                 let nameinput = document.getElementById('nameinput');
                 nameinput.textContent = "username";
+            } else {
+
+                // Получаем строку
+                let str = document.getElementById('username').value.trim();
+
+                // Разделяем строку на части по пробельным символам. Эти части будут записанны как элементы массива, который будет возвращен методом split.
+                let fullNameArr = str.split(' ');
+
+                // Для каждого элемента массива в цикле выполняем преобразование
+                for (let i = 0; i < fullNameArr.length; i++) {
+                    fullNameArr[i] = fullNameArr[i].charAt(0).toUpperCase() + fullNameArr[i].slice(1).toLowerCase();
+                }
+
+                // Соединяем элементы массива в строку
+                let fullNameStr = fullNameArr.join(' ');
+
+                console.log(fullNameStr);
+
+                let nameinput = document.getElementById('nameinput');
+
+                nameinput.textContent = fullNameStr;
             }
-
-
-        }
-
-
-        function user() {
-            // Получаем строку
-            let str = document.getElementById('username').value.trim();
-
-            // Разделяем строку на части по пробельным символам. Эти части будут записанны как элементы массива, который будет возвращен методом split.
-            let fullNameArr = str.split(' ');
-
-            // Для каждого элемента массива в цикле выполняем преобразование
-            for (let i = 0; i < fullNameArr.length; i++) {
-                fullNameArr[i] = fullNameArr[i].charAt(0).toUpperCase() + fullNameArr[i].slice(1).toLowerCase();
-            }
-
-            // Соединяем элементы массива в строку
-            let fullNameStr = fullNameArr.join(' ');
-
-            console.log(fullNameStr);
-
-            let nameinput = document.getElementById('nameinput');
-
-            nameinput.textContent = fullNameStr;
 
 
             //вывод картинки 
@@ -105,31 +131,6 @@
 
 
         };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        let button = document.getElementById('button');
-
-
-
 
         function checkSpam(str) {
 
@@ -144,6 +145,7 @@
         }
 
 
+        let button = document.getElementById('button');
 
         button.addEventListener('click', () => {
 
@@ -154,8 +156,97 @@
             user();
 
             date();
-            username()
+            avatar();
+            // username()
         });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // function user() {
+        //     // Получаем строку
+        //     let str = document.getElementById('username').value.trim();
+
+        //     // Разделяем строку на части по пробельным символам. Эти части будут записанны как элементы массива, который будет возвращен методом split.
+        //     let fullNameArr = str.split(' ');
+
+        //     // Для каждого элемента массива в цикле выполняем преобразование
+        //     for (let i = 0; i < fullNameArr.length; i++) {
+        //         fullNameArr[i] = fullNameArr[i].charAt(0).toUpperCase() + fullNameArr[i].slice(1).toLowerCase();
+        //     }
+
+        //     // Соединяем элементы массива в строку
+        //     let fullNameStr = fullNameArr.join(' ');
+
+        //     console.log(fullNameStr);
+
+        //     let nameinput = document.getElementById('nameinput');
+
+        //     nameinput.textContent = fullNameStr;
+
+
+        //     //вывод картинки 
+        //     let url = document.getElementById('url').value;
+        //     let img = document.getElementById('img');
+        //     img.src = url;
+
+
+        // };
+
+        // function username() {
+        //     let yes = document.getElementById('yesname').checked;
+        //     let no = document.getElementById('noname').checked;
+        //     if (!(no == "")) {
+        //         let nameinput = document.getElementById('nameinput');
+        //         nameinput.textContent = "username";
+        //     }
+
+
+        // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
